@@ -1,13 +1,14 @@
 import React from "react";
 
-const ToDoList = (props) => {
-  console.log(props)
+const ToDoList = ({todos}) => {
+  
     return (
     <div>
       <ul>
-         {props.todos.map(sentence => (
-            <li>{sentence.text}</li>
+         {todos.map(sentence => (
+            <li key={sentence.id}>{sentence.text}</li>
          ))}
+         
       </ul>
     </div>
   );
