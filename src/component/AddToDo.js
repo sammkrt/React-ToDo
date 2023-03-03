@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 
 const AddToDo = ({setTodos}) => {
-    
+    const inputRef = useRef();
     const handleAddTodo= (event) => {
         event.preventDefault();
         const text = event.target.elements.AddTodo.value;
@@ -11,8 +11,10 @@ const AddToDo = ({setTodos}) => {
             text ,
             done: false,
         }
-        setTodos(event.target.elements.AddTodo.value)
-        setTodos(todo)
+        setTodos(prevTodos => {
+            return prevTodos.concat(todo)
+        })
+        inputRef.current.value = "";
 
     }
     return (
